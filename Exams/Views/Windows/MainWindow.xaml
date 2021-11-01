@@ -4,9 +4,45 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Exams"
+        xmlns:vm="clr-namespace:Exams.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="{Binding Title}" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Выход"/>
+            </MenuItem>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <TextBlock Text="Status"/>
+        </StatusBar>
+        <TabControl>
+            <TabItem Header="Охрана труда">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Header="Подразделение:" Grid.Column="0">
+                        
+                    </GroupBox>
+                    <GroupBox Grid.Column="1">
+                        <DataGrid >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Фамилия"/>
+                                <DataGridTextColumn Header="Имя"/>
+                                <DataGridTextColumn Header="Отчество"/>
+                                
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Электробезопасность"></TabItem>
+            <TabItem Header="Пожарная безопасность"></TabItem>
+        </TabControl>
+    </DockPanel>
 </Window>
